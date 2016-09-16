@@ -8,6 +8,7 @@ Running this analysis requires Python 3 and the following packages:
 * pandas
 * tweepy
 * bokeh
+* nltk
 
 Downloading the data requires a Twitter account and API keys that one can generate here: https://apps.twitter.com/app/new
 You must have a phone number associated with your Twitter account. This can be added in `Profile and settings -> Settings -> Mobile`: https://twitter.com/settings/add_phone?edit_phone=true
