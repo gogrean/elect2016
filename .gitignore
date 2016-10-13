@@ -1,0 +1,10 @@
+figs/*.pdf
+figs/*.html
+figs/*.png
+
+data
+credentials
+
+.DS_Store
+.ipynb_checkpoints
+__pycache__
