@@ -14,12 +14,11 @@
 #
 # Below, I suggest setting the number of repetitions (n_repeat) to 
 # 5 or less, because the code takes a while to run. On my Mac, it's 
-# a little under 1.3 min per iteration.
+# about 1 min per iteration.
 
 import random
-from tqdm import tqdm
 
-n_repeat = 1
+n_repeat = 5
 based_on_n_tweets = 2500
 
 n_tweets_trump = filtered_tweets_trump.shape[0]
@@ -35,7 +34,7 @@ voc_diversity_trump = []
 word_reps_clinton = []
 word_reps_trump = []
     
-for rep in tqdm(range(n_repeat)):
+for rep in range(n_repeat):
     choice_idx_trump = random.sample(range(n_tweets_trump), 
                                      based_on_n_tweets)
     choice_idx_clinton = random.sample(range(n_tweets_clinton), 
