@@ -14,12 +14,12 @@
 #
 # Below, I suggest setting the number of repetitions (n_repeat) to 
 # 5 or less, because the code takes a while to run. On my Mac, it's 
-# a little under 1.5 min per iteration.
+# a little under 1.3 min per iteration.
 
 import random
 from tqdm import tqdm
 
-n_repeat = 5
+n_repeat = 1
 based_on_n_tweets = 2500
 
 n_tweets_trump = filtered_tweets_trump.shape[0]
@@ -42,14 +42,12 @@ for rep in tqdm(range(n_repeat)):
                                        based_on_n_tweets)
 
     tweets_trump = Tweets(filtered_tweets_trump.loc[choice_idx_trump,:])
-    trump_tokens = tweets_trump.tokenize()
-    trump_voc_words = tweets_trump.filter_voc_words(trump_tokens, method='stemming')
-    trump_unique_words = tweets_trump.filter_unique_voc_words(trump_tokens, method='stemming')
+    trump_voc_words = tweets_trump.filter_voc_words(method='stemming')
+    trump_unique_words = tweets_trump.filter_unique_voc_words(method='stemming')
 
     tweets_clinton = Tweets(filtered_tweets_clinton.loc[choice_idx_clinton,:])
-    clinton_tokens = tweets_clinton.tokenize()
-    clinton_voc_words = tweets_clinton.filter_voc_words(clinton_tokens, method='stemming')
-    clinton_unique_words = tweets_clinton.filter_unique_voc_words(clinton_tokens, method='stemming')
+    clinton_voc_words = tweets_clinton.filter_voc_words(method='stemming')
+    clinton_unique_words = tweets_clinton.filter_unique_voc_words(method='stemming')
 
     voc_diversity_trump.append(len(trump_unique_words))
     voc_diversity_clinton.append(len(clinton_unique_words))
@@ -79,14 +77,14 @@ ax[0].set_xticklabels(["DONALD TRUMP", "HILLARY CLINTON"], **pfont)
 ax[0].set_title("Twitter vocabulary analysis based on posts between Dec 2015 and Aug 2016", 
                 loc='left', y=1.02, fontsize=18, weight='bold', **pfont)
 ax[0].set_ylabel('Average Word Repetitions', **pfont)
-ax[0].set_ylim([1.05,6.95])
+ax[0].set_ylim([1.05,7.95])
 ax[0].set_xlim([0.2,1.0])
 
 ax[1].bar(bar_pos, [voc_diversity['trump'], voc_diversity['clinton']], width=0.2, color=['firebrick', 'navy'])
 ax[1].set_xticks([pos + bar_width/2 for pos in bar_pos])
 ax[1].set_xticklabels(["DONALD TRUMP", "HILLARY CLINTON"], **pfont)
 ax[1].set_ylabel('Vocabulary Size Based on 2500 Tweets', **pfont)
-ax[1].set_ylim([550,3450])
+ax[1].set_ylim([550,2750])
 ax[1].set_xlim([0.2,1.0])
 fig.subplots_adjust(wspace=0.4)
 

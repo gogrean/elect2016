@@ -1,10 +1,8 @@
 tweets_trump = Tweets(filtered_tweets_trump)
-trump_tokens = tweets_trump.tokenize()
-trump_voc_words = tweets_trump.filter_voc_words(trump_tokens, method='lemmatization')
+trump_voc_words = tweets_trump.filter_voc_words(method='lemmatization')
 
 tweets_clinton = Tweets(filtered_tweets_clinton)
-clinton_tokens = tweets_clinton.tokenize()
-clinton_voc_words = tweets_clinton.filter_voc_words(clinton_tokens, method='lemmatization')
+clinton_voc_words = tweets_clinton.filter_voc_words(method='lemmatization')
 
 wordcloud_trump = " ".join(trump_voc_words)
 wordcloud_clinton = " ".join(clinton_voc_words)
